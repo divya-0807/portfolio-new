@@ -18,11 +18,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-3 left-0 w-full z-100">
+    <div className="fixed top-3 left-0 w-full z-[100] flex justify-center">
       <div
-        className={` transition-all duration-500 mx-auto border border-white/15 rounded-full flex justify-center items-center gap-6 overflow-hidden ${
+        className={`relative transition-all duration-500 border border-white/15 rounded-full flex justify-center items-center gap-6 overflow-hidden backdrop-blur-md ${
           scrolled ? 'w-[200px] h-[50px] py-2 px-4' : 'w-full py-4 px-10'
-        }`}
+        } 
+        ${scrolled ? 'before:absolute before:top-0 before:left-0 before:w-full before:h-full before:backdrop-blur-sm before:z-[-1]' : ''}`}
       >
         {/* HOME */}
         <button
@@ -34,7 +35,7 @@ const Navbar = () => {
 
         {/* PROJECTS */}
         <button
-          onClick={() => scrollToSection('projects')}
+          onClick={() => scrollToSection('section2')}
           className="text-white cursor-pointer flex items-center justify-center transition-transform duration-300 hover:scale-125"
         >
           {scrolled ? <FaProjectDiagram size={25} /> : <span className="text-xl">Projects</span>}

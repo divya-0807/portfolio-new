@@ -1,130 +1,109 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import { Projects } from "../data/Projects";
-import { motion, AnimatePresence } from "framer-motion";
+import { FaGithub } from "react-icons/fa";
 
 const FeaturedProjects = () => {
-  const [current, setCurrent] = useState(0);
-  const containerRef = useRef(null);
+  const [visibleCount,setVisibleCount] = useState(4);
 
-  // Handle scroll to change current project index
-  const handleScroll = () => {
-    const container = containerRef.current;
-    const scrollPos = container.scrollTop;
-    const height = container.clientHeight;
-    const newIndex = Math.round(scrollPos / height);
-    setCurrent(newIndex);
+  //show more logic
+  const handleShowMore =()=>{
+    if(visibleCount>=Projects.length){
+      setVisibleCount(4);
+    }
+    else{
+      setVisibleCount((prev)=>prev+4);
+    }
   };
 
-  // Allow scroll to next section when last iframe is reached
-  useEffect(() => {
-    const container = containerRef.current;
-    const handleWheel = (e) => {
-      const isAtBottom =
-        container.scrollTop + container.clientHeight >= container.scrollHeight - 5;
-
-      if (isAtBottom && e.deltaY > 0) {
-        // Let the scroll pass to the rest of the page
-        container.blur();
-      }
-    };
-
-    container.addEventListener("wheel", handleWheel);
-    return () => container.removeEventListener("wheel", handleWheel);
-  }, []);
-
+  const isAllVisible = visibleCount >=Projects.length;
   return (
-    <section id="section2" className="py-20 px-6 max-w-6xl mx-auto text-white">
-      <h2 className="text-4xl font-bold mb-10 text-center">Featured Work</h2>
-
-      <div className="flex flex-col md:flex-row gap-10 scale-110">
-        {/* Left: Iframe stack with hidden scrollbar */}
-        <div
-          ref={containerRef}
-          onScroll={handleScroll}
-          className="w-full md:w-1/2 h-[350px] overflow-y-scroll snap-y snap-mandatory space-y-4 border rounded-xl"
-          style={{
-            scrollbarWidth: "none", // Firefox
-            msOverflowStyle: "none", // IE/Edge
-          }}
+    <section id="section2" className="w-full min-h-screen py-16 bg-black text-white">
+      <div className="max-w-6xl mx-auto px-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl font-bold mb-10 text-center"
         >
-          <style>{`
-            #section2 ::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
+          Featured Work
+        </motion.h2>
 
-          {Projects.map((project, index) => (
+        <div className="grid gap-12">
+          {Projects.slice(0,visibleCount).map((project, index) => (
             <motion.div
               key={index}
-              className="h-[350px] snap-start rounded-xl overflow-hidden relative group"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.2 }}
+              className={`flex flex-col md:flex-row ${
+                index % 2 !== 0 ? "md:flex-row-reverse" : ""
+              } items-center gap-8`}
             >
-              <div className="w-full h-full overflow-hidden rounded-xl">
-                {/* iframe preview */}
-                <iframe
-                  src={project.liveUrl}
-                  className="w-full h-full border-none pointer-events-none"
-                  loading="lazy"
-                  title={project.title}
-                  scrolling="no"
-                  style={{
-                    overflow: "hidden",
-                    scrollbarWidth: "none",
-                    msOverflowStyle: "none",
-                    WebkitOverflowScrolling: "none",
-                  }}
+              {/* Image */}
+              <div className="md:w-1/2 w-full">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="rounded-xl shadow-md w-full"
                 />
-                {/* Transparent clickable layer */}
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                  title="Click to open project"
-                />
+              </div>
+
+              {/* Text Content */}
+              <div className="md:w-1/2 w-full space-y-4">
+                <h3 className="text-2xl font-bold">{project.title}</h3>
+                <p className="text-gray-300">{project.description}</p>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-4 mt-4">
+                  {project.stack.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="flex items-center gap-1 px-2 py-1 border border-white/20 rounded text-sm text-white"
+                    >
+                      {tech.icon} {tech.label}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Buttons */}
+                <div className="mt-4 flex gap-4">
+                  {project.liveUrl ? (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2 border border-white rounded hover:bg-white hover:text-black transition"
+                    >
+                      Live Preview
+                    </a>
+                  ) : null}
+
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-black transition"
+                  >
+                    <FaGithub /> Code
+                  </a>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Right: Project info */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <h3 className="text-2xl font-semibold">{Projects[current].title}</h3>
-              <p className="mt-2 text-gray-300">{Projects[current].description}</p>
-              <div className="mt-4 flex flex-wrap gap-4 items-center">
-                {Projects[current].stack.map((tech, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-sm"
-                  >
-                    {tech.icon}
-                    <span>{tech.label}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6 flex gap-4">
-                <a
-                  href={Projects[current].githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-2 rounded-full border border-white hover:bg-white hover:text-black transition"
-                >
-                  GitHub
-                </a>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+        {/*show more/show less */}
+        {Projects.length>4 && (
+          <div className="mt-10 text-center z-0">
+            <button
+            onClick={handleShowMore}
+            className="cursor-pointer px-6 py-2 border border-white rounded-4xl hover:text-black hover:bg-white transition text-sm">
+              {isAllVisible ? "Show Less" : "Show More"}
+
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
