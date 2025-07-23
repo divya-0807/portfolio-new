@@ -3,8 +3,8 @@ import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
-import Contact from "../../assets/Contactus.lottie";
-import { DotLottiePlayer } from "@dotlottie/react-player";
+
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "react-toastify/dist/ReactToastify.css";
 
 const ContactUs = () => {
@@ -42,24 +42,23 @@ const ContactUs = () => {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
-        {/* Centered Heading */}
         <h1 className="text-4xl font-semibold mb-10 text-center">
           Got a spark? <span className="underline">Let’s make it real.</span>
         </h1>
 
-        {/* Lottie + Form layout */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
-          {/* Left: Lottie Animation */}
+          {/* Lottie Animation */}
           <div className="flex justify-center w-full lg:w-1/2">
-            <DotLottiePlayer
-              src={Contact}
-              loop
-              autoplay
-              className="w-[300px] md:w-[400px]"
-            />
+            <DotLottieReact
+  src="/assets/Contactus.lottie"
+  loop
+  autoplay
+  className="w-[300px] md:w-[900px] -ml-6"
+/>
+
           </div>
 
-          {/* Right: Contact Form */}
+          {/* Contact Form */}
           <form
             ref={form}
             onSubmit={sendEmail}
