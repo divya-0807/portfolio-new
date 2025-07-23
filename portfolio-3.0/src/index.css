@@ -76,7 +76,7 @@
   font-size: 20px;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: draw 3s ease forwards;
+  animation: draw 8s ease forwards;
 }
 
 @media screen and (max-width: 768px) {
