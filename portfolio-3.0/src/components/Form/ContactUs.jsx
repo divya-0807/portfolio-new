@@ -53,7 +53,7 @@ const ContactUs = () => {
   src="/assets/Contactus.lottie"
   loop
   autoplay
-  className="w-[300px] md:w-[900px] -ml-6"
+  className="w-[0px] md:w-[900px] -ml-6"
 />
 
           </div>
@@ -109,7 +109,7 @@ const ContactUs = () => {
 
             <button
               type="submit"
-              className="mt-6 border-b-2 border-white hover:rounded-4xl cursor-pointer text-white py-2 px-4 hover:text-black hover:bg-white transition-all duration-300 w-fit"
+              className="mt-6 mb-6  border-b-2 border-white rounded-4xl cursor-pointer py-2 px-4 text-black bg-white transition-all duration-300 w-fit"
             >
               Send Message
             </button>
@@ -121,7 +121,7 @@ const ContactUs = () => {
           <p className="mb-4 text-lg font-medium">Or reach me at:</p>
           <div className="flex justify-center gap-6 text-xl">
             <a
-              href="https://linkedin.com/in/your-username"
+              href="https://www.linkedin.com/in/deeshank-batra-404830225/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition"
@@ -129,7 +129,7 @@ const ContactUs = () => {
               <FaLinkedin />
             </a>
             <a
-              href="https://instagram.com/your-username"
+              href="https://www.instagram.com/clumsyshots_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition"
@@ -137,7 +137,7 @@ const ContactUs = () => {
               <FaInstagram />
             </a>
             <a
-              href="mailto:your@email.com"
+              href="mailto:batradeeshank18@gmail.com"
               className="hover:text-gray-300 transition"
             >
               <FaEnvelope />

@@ -51,7 +51,7 @@ const ExtraCurricular = () => {
                       <img
                         src={item.icon}
                         alt={item.club}
-                        className="w-20 h-20 rounded-full mx-auto mb-2 border-2 border-white"
+                        className="w-20 h-20 rounded-full mx-auto mb-2 py-1 border-2 border-white"
                       />
                       <h2 className="text-lg font-bold">{item.club}</h2>
                       <p className="text-sm italic">Role: {item.name}</p>

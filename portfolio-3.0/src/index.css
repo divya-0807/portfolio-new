@@ -39,35 +39,50 @@
   transform-style: preserve-3d;
   transform: rotateX(20deg); /* backward tilt */
 }
+/* Blur effect on main content */
+.blurred {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
 
-/* src/components/SplashScreen.css */
+/* Splash Screen overlay */
 .splash-screen {
   position: fixed;
   inset: 0;
-  background: black;
+  background: rgba(0, 0, 0, 0.3); /* transparent black overlay */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
+/* Namaste animation */
 .namaste-svg {
   width: 80%;
   height: auto;
+  z-index: 1001;
 }
 
 .namaste-path {
   font-family: "Edu NSW ACT Cursive", cursive;
-  font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
   fill: none;
   stroke: white;
   stroke-width: 2;
-  font-size: 15px;
+  font-size: 20px;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: draw 5s ease forwards;
+  animation: draw 3s ease forwards;
+}
+
+@media screen and (max-width: 768px) {
+  .namaste-path {
+    font-size: 40px;
+  }
 }
 
 @keyframes draw {

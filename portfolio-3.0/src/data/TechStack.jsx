@@ -5,6 +5,8 @@ import { BiLogoMongodb, BiLogoCPlusPlus } from "react-icons/bi";
 import { TbBrandNextjs } from "react-icons/tb";
 import { IoLogoNodejs } from "react-icons/io5";
 import { BsCloud } from "react-icons/bs";
+import { DiRedis } from "react-icons/di";
+
 
 export const techStack = [
   {
@@ -38,7 +40,7 @@ export const techStack = [
       { label: "PostgreSQL", icon: <SiPostgresql className="text-3xl hover:text-[#336791]" /> },
       { label: "Oracle", icon: <SiOracle className="text-3xl hover:text-[#F80000]" /> },
       { label: "Firebase", icon: <SiFirebase className="text-3xl hover:text-[#FFCA28]" /> },
-      { label: "Redis", icon: <SiRedis className="text-3xl hover:text-[#DC382D]" /> },
+      { label: "Redis", icon: <DiRedis className="text-3xl hover:text-[#DC382D]" /> },
     ],
   },
   {

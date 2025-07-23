@@ -29,6 +29,7 @@ const Navbar = () => {
         <button
           onClick={() => scrollToSection('home')}
           className="text-white cursor-pointer flex items-center justify-center transition-transform duration-300 hover:scale-125"
+          title={scrolled ? 'Home' : ''}
         >
           {scrolled ? <FaHome size={25} /> : <span className="text-xl">Home</span>}
         </button>
@@ -37,6 +38,7 @@ const Navbar = () => {
         <button
           onClick={() => scrollToSection('section2')}
           className="text-white cursor-pointer flex items-center justify-center transition-transform duration-300 hover:scale-125"
+          title={scrolled ? 'Projects' : ''}
         >
           {scrolled ? <FaProjectDiagram size={25} /> : <span className="text-xl">Projects</span>}
         </button>
@@ -44,7 +46,8 @@ const Navbar = () => {
         {/* SKILLS */}
         <button
           onClick={() => scrollToSection('skills')}
-          className="text-white cursor-pointer flex items-center justify-center transition-transform duration-300 hover:scale-125 "
+          className="text-white cursor-pointer flex items-center justify-center transition-transform duration-300 hover:scale-125"
+          title={scrolled ? 'Skills' : ''}
         >
           {scrolled ? <FaTools size={25} /> : <span className="text-xl">Skills</span>}
         </button>
@@ -53,6 +56,7 @@ const Navbar = () => {
         <button
           onClick={() => scrollToSection('contact')}
           className="text-white cursor-pointer flex items-center justify-center transition-transform duration-300 hover:scale-125"
+          title={scrolled ? 'Contact' : ''}
         >
           {scrolled ? <FaEnvelope size={25} /> : <span className="text-xl">Contact</span>}
         </button>

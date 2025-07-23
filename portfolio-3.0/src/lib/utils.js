@@ -8,7 +8,7 @@ export function cn(...inputs) {
 
 // src/utils.js
 export const ABOUT_1 =
-  "I am a skilled web developer with a unique blend of coding expertise and aesthetic sensibility. My passion for technology drives me to continuously expand my skill set.";
+  "I’m a full-stack web developer passionate about building scalable, user-centric software. From streamlining government systems to optimizing microservices, I craft solutions that blend performance and simplicity.";
 
 export const ABOUT_2 =
-  " I am an enthusiast learning cutting-edge editing software like Premiere Pro and Lightroom. This dedication to learning allows me to stay at the forefront of web trends.";
+  " Some say I write code, others think I write spells. I see databases not as tables, but as time machines — whispering stories in queries. Behind every optimized query and containerized service lies a quiet obsession with perfection. I build for the present, but I always code like someone’s future depends on it.";

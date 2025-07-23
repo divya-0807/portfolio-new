@@ -4,19 +4,19 @@ import { Projects } from "../data/Projects";
 import { FaGithub } from "react-icons/fa";
 
 const FeaturedProjects = () => {
-  const [visibleCount,setVisibleCount] = useState(4);
+  const [visibleCount, setVisibleCount] = useState(4);
 
-  //show more logic
-  const handleShowMore =()=>{
-    if(visibleCount>=Projects.length){
+  // Show more / show less logic
+  const handleShowMore = () => {
+    if (visibleCount >= Projects.length) {
       setVisibleCount(4);
-    }
-    else{
-      setVisibleCount((prev)=>prev+4);
+    } else {
+      setVisibleCount((prev) => prev + 4);
     }
   };
 
-  const isAllVisible = visibleCount >=Projects.length;
+  const isAllVisible = visibleCount >= Projects.length;
+
   return (
     <section id="section2" className="w-full min-h-screen py-16 bg-black text-white">
       <div className="max-w-6xl mx-auto px-4">
@@ -30,7 +30,7 @@ const FeaturedProjects = () => {
         </motion.h2>
 
         <div className="grid gap-12">
-          {Projects.slice(0,visibleCount).map((project, index) => (
+          {Projects.slice(0, visibleCount).map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
@@ -68,7 +68,7 @@ const FeaturedProjects = () => {
 
                 {/* Buttons */}
                 <div className="mt-4 flex gap-4">
-                  {project.liveUrl ? (
+                  {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
@@ -77,8 +77,7 @@ const FeaturedProjects = () => {
                     >
                       Live Preview
                     </a>
-                  ) : null}
-
+                  )}
                   <a
                     href={project.githubUrl}
                     target="_blank"
@@ -93,15 +92,26 @@ const FeaturedProjects = () => {
           ))}
         </div>
 
-        {/*show more/show less */}
-        {Projects.length>4 && (
-          <div className="mt-10 text-center z-0">
+        {/* Show more / Show less + View GitHub */}
+        {Projects.length > 4 && (
+          <div className="mt-10 text-center z-0 flex flex-col items-center gap-4">
             <button
-            onClick={handleShowMore}
-            className="cursor-pointer px-6 py-2 border border-white rounded-4xl hover:text-black hover:bg-white transition text-sm">
+              onClick={handleShowMore}
+              className="cursor-pointer px-6 py-2 border border-white rounded-4xl hover:text-black hover:bg-white transition text-sm"
+            >
               {isAllVisible ? "Show Less" : "Show More"}
-
             </button>
+
+            {isAllVisible && (
+              <a
+                href="https://github.com/your-github-username" // 🔁 Replace this with your actual GitHub profile URL
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-black transition text-sm"
+              >
+                <FaGithub /> View GitHub
+              </a>
+            )}
           </div>
         )}
       </div>
