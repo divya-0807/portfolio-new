@@ -4,7 +4,7 @@ import { clubData } from '../data/clubs';
 
 const ExtraCurricular = () => {
   return (
-    <div className="w-full mb-14 py-32 bg-black text-white relative">
+    <div className="w-full mb-22 -mt-16 py-30 bg-black text-white relative">
       <h1 className="text-4xl font-semibold text-center mb-52">
         Extra Curricular Activities
       </h1>
