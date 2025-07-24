@@ -1,0 +1,102 @@
+
+@import "tailwindcss";
+
+
+.grid-background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -50;
+  background-color: black;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(128, 128, 128, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(128, 128, 128, 0.15) 1px, transparent 1px);
+  background-size: 100px 100px;
+}
+
+/* Add glowing overlay using ::after */
+.grid-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 50px at var(--x) var(--y),
+    rgba(255, 255, 255, 0.2),
+    transparent 60%
+  );
+  transition: background 0.1s ease;
+}
+
+
+.perspective {
+  perspective: 1000px;
+}
+
+.tilt-img {
+  transform-style: preserve-3d;
+  transform: rotateX(20deg); /* backward tilt */
+}
+/* Blur effect on main content */
+.blurred {
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Splash Screen overlay */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3); /* transparent black overlay */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Namaste animation */
+.namaste-svg {
+  width: 80%;
+  height: auto;
+  z-index: 1001;
+}
+
+.namaste-path {
+  font-family: "Edu NSW ACT Cursive", cursive;
+  font-weight: 300;
+  font-style: normal;
+  fill: none;
+  stroke: white;
+  stroke-width: 2;
+  font-size: 20px;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 8s ease forwards;
+}
+
+@media screen and (max-width: 768px) {
+  .namaste-path {
+    font-size: 40px;
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.8s ease forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
