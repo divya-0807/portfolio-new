@@ -1,9 +1,9 @@
-import Chatbot from "../assets/cards/chatbot.png";
-import Chatapp from "../assets/cards/chatapplication.png";
-import Spendora from "../assets/cards/financly.png";
-import Todo from "../assets/cards/todo.png";
-import Swiggy from "../assets/cards/swiggy.png";
-import Webwise from "../assets/cards/webwise.png";
+import Chatbot from "../assets/Cards/chatbot.png";
+import Chatapp from "../assets/Cards/chatapplication.png";
+import Spendora from "../assets/Cards/financly.png";
+import Todo from "../assets/Cards/todo.png";
+import Swiggy from "../assets/Cards/swiggy.png";
+import Webwise from "../assets/Cards/webwise.png";
 
 import { FaReact, FaGithub } from "react-icons/fa";
 import {
