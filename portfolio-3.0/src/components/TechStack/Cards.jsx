@@ -39,7 +39,7 @@ const Cards = () => {
         )}
 
         {/* Cards with smooth sliding animation */}
-        <div className='overflow-hidden  px-2 w-full 2xl:max-w-[1165px] max-w-[1250px] py-4'>
+        <div className='overflow-hidden  px-2 w-full xl:max-w-[870px] 2xl:max-w-[1165px] max-w-[1250px] py-4'>
           <motion.div
             className='flex gap-10'
             animate={{ x: -currentIndex * (cardWidth + gap) }}
