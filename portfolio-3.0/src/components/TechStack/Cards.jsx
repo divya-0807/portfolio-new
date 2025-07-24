@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { techStack } from '../../data/TechStack';
 import Card from './Card';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
@@ -6,9 +6,27 @@ import { motion } from 'framer-motion';
 
 const Cards = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const cardsPerPage = 4;
+  const [cardsPerPage, setCardsPerPage] = useState(4);
   const cardWidth = 250; // Tailwind w-[250px]
-  const gap = 40; // Tailwind gap-10 = 2.5rem = 40px
+  const gap = 40; // Tailwind gap-10 = 40px
+
+  // Detect screen width and set cards per page
+  useEffect(() => {
+    const updateCardsPerPage = () => {
+      const width = window.innerWidth;
+      if (width >= 1536) {
+        setCardsPerPage(4); // 2xl
+      } else if (width >= 1280) {
+        setCardsPerPage(3); // xl
+      } else {
+        setCardsPerPage(2); // just in case
+      }
+    };
+
+    updateCardsPerPage();
+    window.addEventListener('resize', updateCardsPerPage);
+    return () => window.removeEventListener('resize', updateCardsPerPage);
+  }, []);
 
   const handleNext = () => {
     if (currentIndex + cardsPerPage < techStack.length) {
