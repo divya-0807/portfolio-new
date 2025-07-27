@@ -113,7 +113,7 @@ const FeaturedProjects = () => {
 
             {isAllVisible && (
               <a
-                href="https://github.com/your-github-username"
+                href="https://github.com/divya-0807"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 border border-white rounded hover:bg-white hover:text-black transition text-sm"

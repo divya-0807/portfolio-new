@@ -121,7 +121,7 @@ const ContactUs = () => {
           <p className="mb-4 text-lg font-medium">Or reach me at:</p>
           <div className="flex justify-center gap-6 text-xl">
             <a
-              href="https://www.linkedin.com/in/deeshank-batra-404830225/"
+              href="https://www.linkedin.com/in/divya-lokwani/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition"
@@ -129,7 +129,7 @@ const ContactUs = () => {
               <FaLinkedin />
             </a>
             <a
-              href="https://www.instagram.com/clumsyshots_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              href="https://www.instagram.com/divyalokwani_?igsh=bW9hNDg5MDBvZ3Jo&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300 transition"
@@ -137,7 +137,7 @@ const ContactUs = () => {
               <FaInstagram />
             </a>
             <a
-              href="mailto:batradeeshank18@gmail.com"
+              href="mailto:divyalokwani08@gmail.com"
               className="hover:text-gray-300 transition"
             >
               <FaEnvelope />
